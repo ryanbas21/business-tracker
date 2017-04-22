@@ -1,13 +1,31 @@
 /** TodoMVC model definitions **/
 
-declare interface TodoItemData {
-  id?: TodoItemId;
-  text?: string;
-  completed?: boolean;
+declare interface NewJob {
+  id?: ClientIdentificationNumber;
+  job?: string;
+  location?: boolean;
+  paid?: boolean;
+  total?: number;
+}
+declare interface NewClient {
+  id: ClientIdentificationNumber;
+  name: string;
+  location?: string;
+}
+declare interface ClientStoreState {
+  id?: ClientIdentificationNumber;
+  location: string;
+  name: string;
+  phone: number;
+}
+declare interface ClientItemData {
+  id: ClientIdentificationNumber;
+  location: string;
 }
 
-declare type TodoItemId = number;
+declare interface JobStoreState {
 
-declare type TodoFilterType = 'SHOW_ALL' | 'SHOW_ACTIVE' | 'SHOW_COMPLETED';
+}
 
-declare type TodoStoreState = TodoItemData[];
+
+declare type ClientIdentificationNumber = number;

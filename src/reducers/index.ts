@@ -1,10 +1,12 @@
 import { combineReducers, Reducer } from 'redux';
-import todos from './todos';
+import addClient from './client';
+import { reducer as formReducer } from 'redux-form';
 
 export interface RootState {
-  todos: TodoStoreState;
+  clientsList: ClientItemData[];
 }
 
 export default combineReducers<RootState>({
-  todos
+  addClient,
+  form: formReducer
 });

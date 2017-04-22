@@ -1,16 +1,15 @@
 import * as React from 'react';
-import * as TodoActions from '../../actions/todos';
 import * as style from './style.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { RootState } from '../../reducers';
-import { Header, MainSection } from '../../components';
+import * as ClientActions from '../../actions/client';
+import { AddClientForm } from '../../components/index';
 
 export namespace App {
   export interface Props extends RouteComponentProps<void> {
-    todos: TodoItemData[];
-    actions: typeof TodoActions;
+
   }
 
   export interface State {
@@ -20,13 +19,19 @@ export namespace App {
 
 @connect(mapStateToProps, mapDispatchToProps)
 export class App extends React.Component<App.Props, App.State> {
+  constructor() {
+    super();
+    this.addClient = this.addClient.bind(this);
+  }
+  addClient(values) {
+    console.log(values);
+  }
 
   render() {
-    const { todos, actions, children } = this.props;
+    const { children } = this.props;
     return (
       <div className={style.normal}>
-        <Header addTodo={actions.addTodo} />
-        <MainSection todos={todos} actions={actions} />
+        <AddClientForm  addClient={this.addClient} />
         {children}
       </div>
     );
@@ -35,12 +40,12 @@ export class App extends React.Component<App.Props, App.State> {
 
 function mapStateToProps(state: RootState) {
   return {
-    todos: state.todos
+      clients: state.clientsList
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(TodoActions as any, dispatch)
+    actions: bindActionCreators(ClientActions as any, dispatch)
   };
 }
