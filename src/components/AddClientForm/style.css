@@ -1,3 +1,17 @@
+*:focus {
+  outline: none;
+}
+
 .clientFormLabel {
   margin: 10px;
+}
+.error {
+  font-family: "Comic Sans MS";
+  color: darkred;
+  font-size: .8em;
+}
+
+.add-client-input {
+  font-family: fantasy;
+  color: #e6e6e6;
 }

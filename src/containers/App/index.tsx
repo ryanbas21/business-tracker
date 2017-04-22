@@ -4,12 +4,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { RootState } from '../../reducers';
-import * as ClientActions from '../../actions/client';
+import * as clientActions from '../../actions/client';
 import { AddClientForm } from '../../components';
 
 export namespace App {
   export interface Props extends RouteComponentProps<void> {
-
+    actions: typeof clientActions;
+    clients: string[];
   }
 
   export interface State {
@@ -21,16 +22,13 @@ export namespace App {
 export class App extends React.Component<App.Props, App.State> {
   constructor() {
     super();
-    this.addClient = this.addClient.bind(this);
   }
-  addClient(values ) : void {
 
-  }
   render() {
-    const { children } = this.props;
+    const { children, actions, clients } = this.props;
     return (
       <div className={style.normal}>
-        <AddClientForm  addClient={this.addClient} />
+        <AddClientForm />
         {children}
       </div>
     );
@@ -39,12 +37,12 @@ export class App extends React.Component<App.Props, App.State> {
 
 function mapStateToProps(state: RootState) {
   return {
-      clients: state.clientsList
+      clients: ['one','two','three']
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ClientActions as any, dispatch)
+    actions: bindActionCreators(clientActions as any, dispatch)
   };
 }
