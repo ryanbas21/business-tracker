@@ -1,1 +1,1 @@
-export AddClientForm from './AddClientForm/index';
+export { AddClientForm } from './AddClientForm';

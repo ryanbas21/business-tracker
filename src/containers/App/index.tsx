@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { RootState } from '../../reducers';
 import * as ClientActions from '../../actions/client';
-import { AddClientForm } from '../../components/index';
+import { AddClientForm } from '../../components';
 
 export namespace App {
   export interface Props extends RouteComponentProps<void> {
@@ -23,10 +23,9 @@ export class App extends React.Component<App.Props, App.State> {
     super();
     this.addClient = this.addClient.bind(this);
   }
-  addClient(values) {
-    console.log(values);
-  }
+  addClient(values ) : void {
 
+  }
   render() {
     const { children } = this.props;
     return (

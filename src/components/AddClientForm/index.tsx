@@ -6,14 +6,16 @@ import { connect } from 'react-redux';
 
 export namespace AddClient {
   export interface Props {
-
+    addClient: (values) => void;
   }
-
   export interface State {
 
   }
 }
-export default function AddClientForm ({ addClient }) {
+
+export const AddClientForm = reduxForm({
+  form: 'AddClientForm'
+})(function AddClientForm ({ addClient } : AddClient.Props) {
       return (
         <form onSubmit={addClient}>
         <div>
@@ -31,11 +33,5 @@ export default function AddClientForm ({ addClient }) {
         <button type="submit">Submit</button>
       </form>
     );
-  }
-//
-// export default reduxForm({
-//   form: 'AddClientForm'
-// })(AddClientForm);
-
-
+  });
 
