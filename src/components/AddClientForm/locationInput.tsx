@@ -4,14 +4,17 @@ import * as Style from './style.css';
 
 export default ({ input, meta: { touched, error }, ...custom }) => {
   const hasError = touched &&  error !== undefined;
-  console.log(Style, 'style');
-  console.log(hasError, 'hasError');
+
   return (
     <div>
-      {hasError && <Message
-                            className={hasError ? Style.error : ''}
-                            content={`${error}`}
-                            {...input}
+      {hasError &&
+      <Message
+          error
+          header="Error"
+          className={hasError ? Style.error : ''}
+          content={`${error}`}
+
+          {...input}
       />}
       <Input error={hasError}
              fluid

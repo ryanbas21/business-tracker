@@ -6,6 +6,7 @@ import { RouteComponentProps } from 'react-router';
 import { RootState } from '../../reducers';
 import * as clientActions from '../../actions/client';
 import { AddClientForm } from '../../components';
+import { Input, Button } from 'semantic-ui-react';
 
 export namespace App {
   export interface Props extends RouteComponentProps<void> {

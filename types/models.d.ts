@@ -1,4 +1,3 @@
-/** TodoMVC model definitions **/
 declare type ClientIdentificationNumber = number;
 declare namespace IClient {
     interface Info {

@@ -19,7 +19,9 @@ module.exports = {
       'react-dom',
       'react-redux',
       'react-router',
-      'redux'
+      'redux',
+      'semantic-ui-react',
+
     ]
   },
   output: {
