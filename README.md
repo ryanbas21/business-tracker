@@ -1,13 +1,6 @@
-# Frontend Boilerplate with React, Redux & TypeScript
+# Bussiness Tracker with React, Redux & TypeScript
 
-A bare minimum react-redux-webpack-typescript boilerplate with TodoMVC example.
-
-Note that this project does not include **Server-Side Rendering**,  **Testing Frameworks** and other stuffs that makes the package unnecessarily complicated.
-
-Ideal for creating React apps from the scratch.
-
-See also: [react-mobx-typescript-boilerplate](https://github.com/rokoroku/react-mobx-typescript-boilerplate)
-
+WIP
 ## Contains
 
 - [x] [Typescript](https://www.typescriptlang.org/) 2.2
@@ -15,7 +8,6 @@ See also: [react-mobx-typescript-boilerplate](https://github.com/rokoroku/react-
 - [x] [Redux](https://github.com/reactjs/redux) 3.6
 - [x] [React Router](https://github.com/ReactTraining/react-router) 4.0
 - [x] [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
-- [x] [TodoMVC example](http://todomvc.com)
 
 ### Build tools
 
