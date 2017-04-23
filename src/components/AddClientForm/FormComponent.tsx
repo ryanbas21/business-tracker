@@ -4,6 +4,13 @@ import { LocationInput }  from '../../components';
 import { Field } from 'redux-form';
 import { Button } from 'semantic-ui-react';
 
+export namespace IAddClient {
+  export interface Props {
+  }
+  export interface State {
+  }
+}
+
 export function FormComponent (props) {
   const { handleSubmit } = props;
   return (

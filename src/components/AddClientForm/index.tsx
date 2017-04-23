@@ -1,17 +1,11 @@
 import * as React from 'react';
-import * as Style from './style.css';
 import * as ClientActions from '../../actions/client';
 import { Field, reduxForm } from 'redux-form';
 import { Button } from 'semantic-ui-react'
 import { LocationInput } from '../index';
 import { FormComponent } from '../';
 
-export namespace IAddClient {
-  export interface Props {
-  }
-  export interface State {
-  }
-}
+
 export namespace IErrors {
   export interface validateForm {
       firstName?: string;

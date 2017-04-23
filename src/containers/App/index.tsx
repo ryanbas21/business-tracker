@@ -48,4 +48,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export connect(mapStateToProps, mapDispatchToProps, FormComponent)(AppContainer);
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps, FormComponent)(AppContainer);
+
+export { ConnectedApp as App };

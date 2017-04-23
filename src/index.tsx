@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { configureStore } from './store';
-import { AppContainer } from './containers/';
+import { App } from './containers';
 import Navbar from './Navbar';
 import {
   AddClientForm,
@@ -22,7 +22,7 @@ ReactDOM.render(
     <Navbar />
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path="/addclient" component={AppContainer} />
+        <Route path="/addclient" component={App} />
       </Switch>
       </div>
     </Router>
