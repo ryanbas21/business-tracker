@@ -1,27 +1,15 @@
-*:focus {
-  outline: none;
-}
-
-.clientFormLabel {
-  margin: 10px;
-}
-
-.clientFormContainer {
-  margin: auto;
-  width: 400px;
-  height: 225px;
-}
-
 .error {
   font-family: "Comic Sans MS";
   color: darkred;
   font-size: .8em;
 }
+
 .clientInputs {
   display: inline-block;
   margin: 20px;
   width: 100%;
 }
+
 .add-client-input {
   font-family: fantasy;
   color: #e6e6e6;

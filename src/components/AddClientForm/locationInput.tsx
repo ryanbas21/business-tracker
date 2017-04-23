@@ -2,9 +2,8 @@ import * as React from 'react';
 import { Input, Message } from 'semantic-ui-react';
 import * as Style from './style.css';
 
-export default ({ input, meta: { touched, error }, ...custom }) => {
+export const LocationInput = ({ input, meta: { touched, error }, ...custom }) => {
   const hasError = touched &&  error !== undefined;
-
   return (
     <div>
       {hasError &&
@@ -24,6 +23,4 @@ export default ({ input, meta: { touched, error }, ...custom }) => {
         />
     </div>
   )
-}
-
-
+};

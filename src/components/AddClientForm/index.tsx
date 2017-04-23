@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Field, reduxForm } from 'redux-form';
 import * as Style from './style.css';
 import * as ClientActions from '../../actions/client';
+import { Field, reduxForm } from 'redux-form';
 import { Button } from 'semantic-ui-react'
-import locationInput from './locationInput';
+import { LocationInput } from '../index';
+import { FormComponent } from '../';
 
 export namespace IAddClient {
   export interface Props {
@@ -17,6 +18,7 @@ export namespace IErrors {
       lastName?: string;
   }
 }
+
 const validate = ({ firstName, lastName }) => {
     const errors : IErrors.validateForm = {};
     if (!firstName ) errors.firstName = 'First Name Required';
@@ -28,30 +30,4 @@ const validate = ({ firstName, lastName }) => {
 export const AddClientForm = reduxForm({
   form: 'AddClientForm',
   validate
-})(function AddClientForm (props) {
-    const { handleSubmit } = props;
-
-    return (
-        <form className={Style.clientFormContainer} onSubmit={handleSubmit( () => {
-          console.log('submitted!', props);
-        })}>
-          <div className={Style.clientInputs}>
-           <label htmlFor="First Name">First Name</label>
-           <Field className='add-client-input' name="firstName" component={locationInput} type="text"/>
-          </div>
-          <div className={Style.clientInputs}>
-            <label htmlFor="Last Name">Last Name</label>
-            <Field className='add-client-input' name="lastName" component={locationInput} type="text"/>
-          </div>
-          <div className={Style.clientInputs}>
-          <label htmlFor="Email">Email</label>
-          <Field className='add-client-input' name="email" component={locationInput} type="email"/>
-          </div>
-          <br />
-          <Button primary type="submit" onClick={handleSubmit(() => '')}>
-            Submit
-          </Button>
-      </form>
-    );
-  });
-
+})(FormComponent);
