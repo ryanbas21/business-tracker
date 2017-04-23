@@ -38,6 +38,13 @@ export default class Navbar extends React.Component<INavbar.Props, INavbar.State
           active={activeItem === 'Add Client'}
           onClick={this.handleItemClick}
         />
+        <Menu.Item
+          as={Link}
+          to='/viewclients'
+          name='View All Clients'
+          active={activeItem === 'View All Clients'}
+          onClick={this.handleItemClick}
+        />
       </Menu>
     )
   }

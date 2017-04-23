@@ -7,10 +7,10 @@ import { RouteComponentProps } from 'react-router';
 import { RootState } from '../../reducers';
 import * as style from './style.css';
 import * as clientActions from '../../actions/client';
-import { AddClientForm } from '../../components';
 import Navbar from '../../Navbar';
+import { ViewClients } from '../../components';
 
-namespace App {
+namespace ViewClientsContainer {
   export interface Props extends RouteComponentProps<void> {
     actions: typeof clientActions;
     clients: string[];
@@ -22,7 +22,7 @@ namespace App {
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-class App extends React.Component<App.Props, App.State> {
+class ViewClientsContainer extends React.Component<ViewClientsContainer.Props, ViewClientsContainer.State> {
   constructor() {
     super();
   }
@@ -31,13 +31,19 @@ class App extends React.Component<App.Props, App.State> {
     const { children, actions, clients } = this.props;
     return (
       <div>
-      <AddClientForm onSubmit={actions.addClient}/>
+        {clients.map((client, index) =>
+          <ViewClients
+            key={index}
+            client={[client]}
+          />
+        )}
      </div>
     );
   }
 }
 
 function mapStateToProps(state: RootState) {
+  console.log('state', state.clients);
   return {
       clients: state.clients
   };
@@ -49,4 +55,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export { App };
+export { ViewClientsContainer };

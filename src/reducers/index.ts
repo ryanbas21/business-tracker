@@ -1,12 +1,12 @@
 import { combineReducers, Reducer } from 'redux';
-import client from './client';
+import clients from './client';
 import { reducer as formReducer } from 'redux-form';
 
 export interface RootState {
-  clientsList: IClient.ClientData[];
+  clients: IClient.ClientData[];
 }
 
 export default combineReducers<RootState>({
-  client,
+  clients,
   form: formReducer
 });

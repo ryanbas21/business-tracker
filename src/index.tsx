@@ -1,12 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-//require('semantic-ui-css/semantic.min.css');
 import { Provider } from 'react-redux';
 import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { configureStore } from './store';
-import { App } from './containers';
 import Navbar from './Navbar';
+import { App, ViewClientsContainer } from './containers';
 import {
   AddClientForm,
   Home,
@@ -23,6 +22,7 @@ ReactDOM.render(
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path="/addclient" component={App} />
+        <Route path='/viewclients' component={ViewClientsContainer} />
       </Switch>
       </div>
     </Router>

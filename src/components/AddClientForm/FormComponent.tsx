@@ -12,11 +12,10 @@ export namespace IAddClient {
 }
 
 export function FormComponent (props) {
+  console.log(props);
   const { handleSubmit } = props;
   return (
-      <form className={Style.clientFormContainer} onSubmit={handleSubmit( () => {
-        console.log('submitted!', props);
-      })}>
+      <form onSubmit={handleSubmit} className={Style.clientFormContainer}>
         <div className={Style.clientInputs}>
          <label htmlFor="First Name">First Name</label>
          <Field
@@ -45,9 +44,7 @@ export function FormComponent (props) {
           />
         </div>
         <br />
-        <Button primary type="submit" onClick={handleSubmit(() => {
-          console.log(props.values);
-        })}>
+        <Button onClick={handleSubmit} primary type="submit">
           Submit
         </Button>
     </form>
