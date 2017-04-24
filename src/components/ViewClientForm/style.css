@@ -2,3 +2,12 @@
   display: flex;
   float: left;
 }
+
+.inline {
+  display: inline;
+}
+
+.allClients {
+  margin: 0 auto;
+  width: 400px;
+}

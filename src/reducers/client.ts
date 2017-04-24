@@ -13,8 +13,11 @@ export default handleActions<IClient.Info[], IClient.ClientData>({
     console.log('dispatched edit client');
   },
   [Actions.DELETE_CLIENT]: (state, action) => {
-    console.log('dispatched delete client');
-    return state.filter(client => client.id !== action.payload.id)
+    console.log('dispatched delete client', action);
+    return state.filter(client => {
+      console.log(client);
+      return client.id !== action.payload.id
+    });
 
   },
   [Actions.VIEW_CLIENTS]: (state, action) => {

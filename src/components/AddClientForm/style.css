@@ -5,12 +5,6 @@
 }
 
 .clientInputs {
-  display: inline-block;
   margin: 20px;
-  width: 100%;
-}
-
-.add-client-input {
-  font-family: fantasy;
-  color: #e6e6e6;
+  width: 300px;
 }

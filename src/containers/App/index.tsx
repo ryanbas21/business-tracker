@@ -1,11 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Button } from 'semantic-ui-react';
+import { Input, Button, Container } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { RootState } from '../../reducers';
-import * as style from './style.css';
+import * as Style from './style.css';
 import * as clientActions from '../../actions/client';
 import { AddClientForm } from '../../components';
 import Navbar from '../../Navbar';
@@ -30,9 +30,9 @@ class App extends React.Component<App.Props, App.State> {
   render() {
     const { children, actions, clients } = this.props;
     return (
-      <div>
-      <AddClientForm onSubmit={actions.addClient}/>
-     </div>
+      <Container className={Style.formContainer} textAlign='left'>
+        <AddClientForm onSubmit={actions.addClient}/>
+     </Container>
     );
   }
 }

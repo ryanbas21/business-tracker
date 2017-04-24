@@ -19,11 +19,9 @@ ReactDOM.render(
     <Router history={history}>
     <div>
     <Navbar />
-      <Switch>
         <Route exact path='/' component={Home} />
         <Route path="/addclient" component={App} />
         <Route path='/viewclients' component={ViewClientsContainer} />
-      </Switch>
       </div>
     </Router>
   </Provider>,

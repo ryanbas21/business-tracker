@@ -12,7 +12,6 @@ export namespace IAddClient {
 }
 
 export function FormComponent (props) {
-  console.log(props);
   const { handleSubmit } = props;
   return (
       <form onSubmit={handleSubmit} className={Style.clientFormContainer}>
@@ -41,6 +40,24 @@ export function FormComponent (props) {
              name="email"
              component={LocationInput}
              type="email"
+          />
+        </div>
+        <div className={Style.clientInputs}>
+          <label htmlFor="Location">Location</label>
+          <Field
+             className='add-client-input'
+             name="location"
+             component={LocationInput}
+             type="text"
+          />
+        </div>
+        <div className={Style.clientInputs}>
+          <label htmlFor="Phone">Phone</label>
+          <Field
+             className='add-client-input'
+             name="Phone"
+             component={LocationInput}
+             type="text"
           />
         </div>
         <br />
