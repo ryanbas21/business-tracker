@@ -6,8 +6,7 @@ import { Button } from 'semantic-ui-react';
 
 export namespace IAddClient {
   export interface Props {
-  }
-  export interface State {
+    handleSubmit: () => any;
   }
 }
 

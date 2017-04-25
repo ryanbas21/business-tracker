@@ -14,13 +14,16 @@ import autobind from 'autobind-decorator';
 
 namespace ViewClientsContainer {
   export interface Props extends RouteComponentProps<void> {
-    actions: typeof clientActions;
+    actions: ClientActions;
     clients: IClient.Info[];
-    state: IClient.Info[];
   }
 
   export interface State {
-    /* empty */
+    clients: IClient.Info[];
+    form: FormData;
+  }
+  export interface ClientActions {
+    deleteClient : (clientId:number) => any;
   }
 }
 
@@ -28,15 +31,13 @@ namespace ViewClientsContainer {
 @connect(mapStateToProps, mapDispatchToProps)
 class ViewClientsContainer extends React.Component<ViewClientsContainer.Props, ViewClientsContainer.State> {
   render() {
-    console.log(this.props, 'props');
     const { children, actions, clients } = this.props;
     return clients.length ?
     <div className={Style.normal}>
     {clients.map((client, index) => <ViewClients
-      clientId={clients[index].clientId}
-      key={index} client={[client]}
-      deleteClient={() => actions.deleteClient(clients[index].clientId)}
-      />
+        key={index}
+        client={[client]}
+        deleteClient={() => actions.deleteClient(clients[index].clientId)} />
         )}</div>
     : <Message>
           <Message.Header>

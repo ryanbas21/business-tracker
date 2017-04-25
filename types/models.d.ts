@@ -1,7 +1,7 @@
-declare type ClientIdentificationNumber = number;
+declare type IdentificationNumber = number;
 declare namespace IClient {
   interface Info {
-    clientId?: ClientIdentificationNumber;
+    clientId?: IdentificationNumber;
     location?: string;
     firstName: string;
     lastName: string;
@@ -10,16 +10,16 @@ declare namespace IClient {
     jobs: IJob.Jobs[]
   }
   interface ClientData {
-    id: ClientIdentificationNumber;
+    id: IdentificationNumber;
     location: string;
   }
 
 }
 declare namespace IJob {
-  interface NewJob {
-    id?: ClientIdentificationNumber;
+  interface Info {
+    jobId?: IdentificationNumber;
     job?: string;
-    location?: boolean;
+    location?: string;
     paid?: boolean;
     total?: number;
   }
