@@ -7,7 +7,7 @@ declare namespace IClient {
     lastName: string;
     phone?: number;
     email?: string;
-    jobs: IJob.Jobs[]
+    jobs?: IJob.Jobs[]
   }
   interface ClientData {
     id: IdentificationNumber;
