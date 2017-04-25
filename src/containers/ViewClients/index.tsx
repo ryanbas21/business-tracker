@@ -10,11 +10,13 @@ import * as Style from './style.css';
 import * as clientActions from '../../actions/client';
 import Navbar from '../../Navbar';
 import { ViewClients } from '../../components';
+import autobind from 'autobind-decorator';
 
 namespace ViewClientsContainer {
   export interface Props extends RouteComponentProps<void> {
     actions: typeof clientActions;
-    clients: string[];
+    clients: IClient.Info[];
+    state: IClient.Info[];
   }
 
   export interface State {
@@ -22,13 +24,19 @@ namespace ViewClientsContainer {
   }
 }
 
+@autobind
 @connect(mapStateToProps, mapDispatchToProps)
 class ViewClientsContainer extends React.Component<ViewClientsContainer.Props, ViewClientsContainer.State> {
   render() {
+    console.log(this.props, 'props');
     const { children, actions, clients } = this.props;
-    return clients.length?
+    return clients.length ?
     <div className={Style.normal}>
-    {clients.map((client, index) => <ViewClients key={index} client={[client]} deleteClient={actions.deleteClient}/>
+    {clients.map((client, index) => <ViewClients
+      clientId={clients[index].clientId}
+      key={index} client={[client]}
+      deleteClient={() => actions.deleteClient(clients[index].clientId)}
+      />
         )}</div>
     : <Message>
           <Message.Header>
@@ -42,7 +50,6 @@ class ViewClientsContainer extends React.Component<ViewClientsContainer.Props, V
 }
 
 function mapStateToProps(state: RootState) {
-  console.log('state', state.clients);
   return {
       clients: state.clients
   };

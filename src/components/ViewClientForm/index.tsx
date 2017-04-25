@@ -14,8 +14,8 @@ export namespace Item {
   }
 }
 export function ViewClients (props) {
-  const { client, index, deleteClient } = props
-  console.log(props, props.delete);
+  const { client, index, deleteClient, clientId } = props
+
   const clientInformation : Item.IClient = client.reduce((prev, clientObject : IClient.Info) => {
     prev.header = `${clientObject.firstName} ${clientObject.lastName}`
     prev.meta = `${clientObject.email ? clientObject.email : `No Email provided`}`
@@ -24,10 +24,11 @@ export function ViewClients (props) {
     ${clientObject.location ? clientObject.location: `No Location Provided` }
     ${clientObject.phone ? clientObject.phone: `No Phone Number Provided`}`;
     return prev;
-  }, {})
+  }, {});
+
   return (
     <div className={Style.allClients}>
-      <Button negative onClick={deleteClient}>Delete</Button>
+      <Button negative onClick={(clientId) => deleteClient(clientId)}>Delete</Button>
       <Item.Group>
               <Image src={clientInformation.image} size='small' />
             </Item.Group>
