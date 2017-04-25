@@ -1,0 +1,10 @@
+.error {
+  font-family: "Comic Sans MS";
+  color: darkred;
+  font-size: .8em;
+}
+
+.jobInputs {
+  margin: 20px;
+  width: 300px;
+}
