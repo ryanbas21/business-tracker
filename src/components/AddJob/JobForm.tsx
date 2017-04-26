@@ -3,8 +3,7 @@ import * as Style from './style.css';
 import { LocationInput }  from '../../components';
 import { Field } from 'redux-form';
 import { Button } from 'semantic-ui-react';
-import DropdownList from 'react-widgets/lib/DropdownList'
-import SelectList from 'react-widgets/lib/SelectList'
+import { DropdownList, SelectList } from 'react-widgets'
 
 export namespace IAddJob {
   export interface Props {

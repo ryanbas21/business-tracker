@@ -11,7 +11,7 @@ export namespace IAddClient {
 }
 
 export function AddClientFormComponent (props) {
-  const { handleSubmit } = props;
+  const { handleSubmit, pristine, submitting } = props;
   return (
       <form onSubmit={handleSubmit} className={Style.clientFormContainer}>
         <div className={Style.clientInputs}>
@@ -60,7 +60,7 @@ export function AddClientFormComponent (props) {
           />
         </div>
         <br />
-        <Button onClick={handleSubmit} primary type="submit">
+        <Button onClick={handleSubmit} disabled={pristine || submitting} primary type="submit">
           Submit
         </Button>
     </form>
