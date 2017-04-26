@@ -22,7 +22,12 @@ namespace ViewClientsContainer {
     form: FormData;
   }
   export interface ClientActions {
-    deleteClient : (clientId:number) => any;
+    deleteClient : (clientId: IClient.ClientId) => any;
+  }
+  export interface ClientArgument {
+    firstName: string;
+    lastName: string;
+    clientId: IClient.ClientId;
   }
 }
 
@@ -33,11 +38,13 @@ class ViewClientsContainer extends React.Component<ViewClientsContainer.Props, V
     const { children, actions, clients } = this.props;
     return clients.length ?
     <div className={Style.normal}>
-    {clients.map((client : IClient.Info, index : number) : JSX.Element => <ViewClients
+    {clients.map((client : ViewClientsContainer.ClientArgument, index : number) : JSX.Element => {
+      console.log('client', client);
+      return <ViewClients
         key={index}
         client={[client]}
-        deleteClient={() => actions.deleteClient(client[index].clientId)} />
-        )}</div>
+        deleteClient={() => actions.deleteClient(client.clientId)}/>
+    })}</div>
     : <Message>
           <Message.Header>
             No Client Data To Display

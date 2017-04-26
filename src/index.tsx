@@ -5,7 +5,11 @@ import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 import { configureStore } from './store';
 import Navbar from './Navbar';
-import { AddClient, ViewClientsContainer } from './containers';
+import {
+  AddClient,
+  ViewClientsContainer,
+  AddJobContainer
+  } from './containers';
 import {
   AddClientForm,
 
@@ -21,8 +25,9 @@ ReactDOM.render(
     <div>
     <Navbar />
         <Route exact path='/' component={Home} />
-        <Route path="/addclient" component={AddClient} />
+        <Route path='/addclient' component={AddClient} />
         <Route path='/viewclients' component={ViewClientsContainer} />
+        <Route path='/addjob' component={AddJobContainer} />
       </div>
     </Router>
   </Provider>,

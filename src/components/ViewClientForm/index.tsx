@@ -4,7 +4,14 @@ import { Link } from 'react-router-dom';
 import { LocationInput }  from '../../components';
 import { Item, Icon, Image, Grid, Button } from 'semantic-ui-react';
 
-
+export namespace IViewClients {
+  export interface Props {
+    handleSubmit: () => any
+    client: IClient.Info[];
+    deleteClient: any;
+    key: number;
+  }
+}
 export namespace Item {
   export interface IClient {
     header: string;
@@ -14,7 +21,7 @@ export namespace Item {
   }
 }
 export function ViewClients (props) {
-  const { client, index, deleteClient, clientId } = props
+  const { client, index, deleteClient } = props
 
   const clientInformation : Item.IClient = client
   .reduce((prev, clientObject : IClient.Info) => {
@@ -29,7 +36,7 @@ export function ViewClients (props) {
 
   return (
     <div className={Style.allClients}>
-      <Button negative onClick={(clientId) => deleteClient(clientId)}>Delete</Button>
+      <Button negative onClick={deleteClient}>Delete</Button>
         <Item.Group>
           <Image src={clientInformation.image} size='small' />
         </Item.Group>

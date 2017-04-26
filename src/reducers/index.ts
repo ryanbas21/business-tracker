@@ -8,7 +8,7 @@ export interface RootState {
 }
 
 export default combineReducers<RootState>({
-  ClientReducer,
-  JobsReducer,
+  clients: ClientReducer,
+  jobs: JobsReducer,
   form: formReducer
 });
