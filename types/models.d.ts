@@ -1,34 +1,29 @@
 declare type IdentificationNumber = number;
 declare namespace IClient {
   interface Info {
-    clientId?: IdentificationNumber;
+    clientId?: IClient.ClientId;
     location?: string;
     firstName: string;
     lastName: string;
     phone?: number;
     email?: string;
-    jobs?: IJob.Jobs[]
+    jobs?: IJob.Info[];
   }
-  interface ClientData {
-    id: IdentificationNumber;
-    location: string;
+  export interface ClientId {
+    clientId: IdentificationNumber;
   }
-
+  export interface ClientList {
+    name: string;
+    ClientId: IClient.ClientId
+  }
 }
+
 declare namespace IJob {
-  interface Info {
+  export interface Info {
     jobId?: IdentificationNumber;
     job?: string;
     location?: string;
     paid?: boolean;
     total?: number;
   }
-  interface Jobs {
-    paid: boolean;
-    total: number;
-    location: string;
-    type: string;
-
-  }
-
 }

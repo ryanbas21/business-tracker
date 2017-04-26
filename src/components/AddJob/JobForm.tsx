@@ -3,6 +3,8 @@ import * as Style from './style.css';
 import { LocationInput }  from '../../components';
 import { Field } from 'redux-form';
 import { Button } from 'semantic-ui-react';
+import DropdownList from 'react-widgets/lib/DropdownList'
+import SelectList from 'react-widgets/lib/SelectList'
 
 export namespace IAddJob {
   export interface Props {
@@ -11,11 +13,11 @@ export namespace IAddJob {
 }
 
 export function JobForm (props) {
-  const { handleSubmit } = props;
+  const { handleSubmit, pristine, reset, submitting, onBlur, clientList } = props;
   return (
     <form onSubmit={handleSubmit} className={Style.clientFormContainer}>
       <div className={Style.clientInputs}>
-        <label htmlFor="First Name">Job Name</label>
+        <label htmlFor="First Name">Job Title</label>
         <Field
           className={Style.jobsInputs}
           name="firstName"
@@ -23,6 +25,16 @@ export function JobForm (props) {
           type="text"
         />
       </div>
+      <div>
+      <label>Client</label>
+      <Field
+        name="client"
+        component={DropdownList}
+        data={clientList}
+        onBlur={() => onBlur()}
+        valueField="value"
+        textField="Client"/>
+    </div>
       <div className={Style.clientInputs}>
         <label htmlFor="Last Name">Locatoion</label>
         <Field
@@ -62,7 +74,7 @@ export function JobForm (props) {
         />
       </div>
       <br />
-      <Button onClick={handleSubmit} primary type="submit">
+      <Button disabled={pristine || submitting} onClick={handleSubmit} primary type="submit">
         Submit
       </Button>
     </form>

@@ -10,7 +10,7 @@ export namespace IAddClient {
   }
 }
 
-export function FormComponent (props) {
+export function AddClientFormComponent (props) {
   const { handleSubmit } = props;
   return (
       <form onSubmit={handleSubmit} className={Style.clientFormContainer}>

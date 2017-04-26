@@ -3,7 +3,7 @@ import * as ClientActions from '../../actions/client';
 import { Field, reduxForm } from 'redux-form';
 import { Button } from 'semantic-ui-react'
 import { LocationInput } from '../index';
-import { FormComponent } from './FormComponent';
+import { AddClientFormComponent } from './AddClientFormComponent';
 
 
 export namespace IErrors {
@@ -19,8 +19,8 @@ const validate = ({ firstName, lastName }) => {
     if (!lastName) errors.lastName = 'Last Name Required';
     return errors;
   }
-  
+
 export const AddClientForm = reduxForm({
   form: 'AddClientForm',
   validate,
-})(FormComponent);
+})(AddClientFormComponent);

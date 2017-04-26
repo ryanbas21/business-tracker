@@ -17,7 +17,6 @@ namespace ViewClientsContainer {
     actions: ClientActions;
     clients: IClient.Info[];
   }
-
   export interface State {
     clients: IClient.Info[];
     form: FormData;
@@ -34,10 +33,10 @@ class ViewClientsContainer extends React.Component<ViewClientsContainer.Props, V
     const { children, actions, clients } = this.props;
     return clients.length ?
     <div className={Style.normal}>
-    {clients.map((client, index) => <ViewClients
+    {clients.map((client : IClient.Info, index : number) : JSX.Element => <ViewClients
         key={index}
         client={[client]}
-        deleteClient={() => actions.deleteClient(clients[index].clientId)} />
+        deleteClient={() => actions.deleteClient(client[index].clientId)} />
         )}</div>
     : <Message>
           <Message.Header>

@@ -20,7 +20,7 @@ const validate = ({ firstName, lastName }) => {
   return errors;
 }
 
-export const AddClientForm = reduxForm({
+export const AddJobForm = reduxForm({
   form: 'AddJobForm',
   validate,
 })(JobForm);
