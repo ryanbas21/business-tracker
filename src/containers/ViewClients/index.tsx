@@ -10,26 +10,41 @@ import * as Style from './style.css';
 import * as clientActions from '../../actions/client';
 import Navbar from '../../Navbar';
 import { ViewClients } from '../../components';
+import autobind from 'autobind-decorator';
 
 namespace ViewClientsContainer {
   export interface Props extends RouteComponentProps<void> {
-    actions: typeof clientActions;
-    clients: string[];
+    actions: ClientActions;
+    clients: IClient.Info[];
   }
-
   export interface State {
-    /* empty */
+    clients: IClient.Info[];
+    form: FormData;
+  }
+  export interface ClientActions {
+    deleteClient : (clientId: IClient.ClientId) => any;
+  }
+  export interface ClientArgument {
+    firstName: string;
+    lastName: string;
+    clientId: IClient.ClientId;
   }
 }
 
+@autobind
 @connect(mapStateToProps, mapDispatchToProps)
 class ViewClientsContainer extends React.Component<ViewClientsContainer.Props, ViewClientsContainer.State> {
   render() {
     const { children, actions, clients } = this.props;
-    return clients.length?
+    return clients.length ?
     <div className={Style.normal}>
-    {clients.map((client, index) => <ViewClients key={index} client={[client]} deleteClient={actions.deleteClient}/>
-        )}</div>
+    {clients.map((client : ViewClientsContainer.ClientArgument, index : number) : JSX.Element => {
+      console.log('client', client);
+      return <ViewClients
+        key={index}
+        client={[client]}
+        deleteClient={() => actions.deleteClient(client.clientId)}/>
+    })}</div>
     : <Message>
           <Message.Header>
             No Client Data To Display
@@ -42,7 +57,6 @@ class ViewClientsContainer extends React.Component<ViewClientsContainer.Props, V
 }
 
 function mapStateToProps(state: RootState) {
-  console.log('state', state.clients);
   return {
       clients: state.clients
   };

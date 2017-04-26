@@ -6,13 +6,12 @@ import { Button } from 'semantic-ui-react';
 
 export namespace IAddClient {
   export interface Props {
-  }
-  export interface State {
+    handleSubmit: () => any;
   }
 }
 
-export function FormComponent (props) {
-  const { handleSubmit } = props;
+export function AddClientFormComponent (props) {
+  const { handleSubmit, pristine, submitting } = props;
   return (
       <form onSubmit={handleSubmit} className={Style.clientFormContainer}>
         <div className={Style.clientInputs}>
@@ -61,7 +60,7 @@ export function FormComponent (props) {
           />
         </div>
         <br />
-        <Button onClick={handleSubmit} primary type="submit">
+        <Button onClick={handleSubmit} disabled={pristine || submitting} primary type="submit">
           Submit
         </Button>
     </form>

@@ -22,11 +22,7 @@ namespace App {
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-class App extends React.Component<App.Props, App.State> {
-  constructor() {
-    super();
-  }
-
+class AddClient extends React.Component<App.Props, App.State> {
   render() {
     const { children, actions, clients } = this.props;
     return (
@@ -49,4 +45,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export { App };
+export { AddClient };

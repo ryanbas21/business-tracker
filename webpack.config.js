@@ -21,8 +21,7 @@ module.exports = {
       'react-router',
       'redux',
       'semantic-ui-react',
-
-    ]
+    ],
   },
   output: {
     path: outPath,
@@ -34,18 +33,25 @@ module.exports = {
     extensions: ['.js', '.ts', '.tsx'],
     // Fix webpack's default behavior to not load packages with jsnext:main module
     // https://github.com/Microsoft/TypeScript/issues/11677
-    mainFields: ['main']
+    mainFields: ['main'],
   },
   module: {
     loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          plugins: ['transform-runtime'],
+          presets: ['es2015', 'react', 'stage-0'], // <--- here
+        },
+      },
       // .ts, .tsx
       {
         test: /\.tsx?$/,
         use: isProduction
           ? 'awesome-typescript-loader?module=es6'
-          : [
-            'awesome-typescript-loader'
-          ]
+          : ['awesome-typescript-loader'],
       },
       // css
       {
@@ -59,19 +65,19 @@ module.exports = {
                 modules: true,
                 sourceMap: !isProduction,
                 importLoaders: 1,
-                localIdentName: '[local]__[hash:base64:5]'
-              }
+                localIdentName: '[local]__[hash:base64:5]',
+              },
             },
             {
-              loader: 'postcss-loader'
-            }
-          ]
-        })
+              loader: 'postcss-loader',
+            },
+          ],
+        }),
       },
       // static assets
-      { test: /\.html$/, use: 'html-loader' },
-      { test: /\.png$/, use: 'url-loader?limit=10000' },
-      { test: /\.jpg$/, use: 'file-loader' },
+      {test: /\.html$/, use: 'html-loader'},
+      {test: /\.png$/, use: 'url-loader?limit=10000'},
+      {test: /\.jpg$/, use: 'file-loader'},
     ],
   },
   plugins: [
@@ -79,39 +85,39 @@ module.exports = {
       options: {
         context: sourcePath,
         postcss: [
-          require('postcss-import')({ addDependencyTo: webpack }),
+          require('postcss-import')({addDependencyTo: webpack}),
           require('postcss-url')(),
           require('postcss-cssnext')(),
           require('postcss-reporter')(),
-          require('postcss-browser-reporter')({ disabled: isProduction }),
-        ]
-      }
+          require('postcss-browser-reporter')({disabled: isProduction}),
+        ],
+      },
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'vendor.bundle.js',
-      minChunks: Infinity
+      minChunks: Infinity,
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new ExtractTextPlugin({
       filename: 'styles.css',
-      disable: !isProduction
+      disable: !isProduction,
     }),
     new HtmlWebpackPlugin({
-      template: 'index.html'
-    })
+      template: 'index.html',
+    }),
   ],
   devServer: {
     contentBase: sourcePath,
     hot: true,
     stats: {
-      warnings: false
+      warnings: false,
     },
   },
   node: {
     // workaround for webpack-dev-server issue
     // https://github.com/webpack/webpack-dev-server/issues/60#issuecomment-103411179
     fs: 'empty',
-    net: 'empty'
-  }
+    net: 'empty',
+  },
 };
